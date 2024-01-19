@@ -10,14 +10,13 @@ void main() async {
 }
 
 class MyApp extends StatelessWidget {
+  final getStorage = GetStorage();
   @override
   Widget build(BuildContext context) {
+    bool darkMode = getStorage.read('darkMode') ?? false;
     return GetMaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.red,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
+      theme: darkMode ? ThemeData.dark() : ThemeData.light(),
       home: NoteList(),
     );
   }
